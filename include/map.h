@@ -24,7 +24,7 @@
 /* a union means that this structure can be of either of these descriptions:
 /  either "value" or "e"
 */
-typdef union {
+typedef union {
   unsigned int value;
   struct {
     unsigned char x;

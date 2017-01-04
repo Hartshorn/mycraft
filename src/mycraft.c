@@ -1,7 +1,12 @@
 
-#include "structures.h"
-#include "map.h"
-#include <GL/glfw3.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "../deps/tinycthread/tinycthread.h"
+#include "../include/map.h"
+#include "../include/sign.h"
 
 
 #define WORKERS_COUNT     4
@@ -9,6 +14,15 @@
 #define MAX_TEXT_LENGTH   256
 #define MAX_NAME_LENGTH   32
 #define MAX_PLAYERS       128
+#define MAX_MESSAGES	  4
+#define WINDOW_WIDTH	  1024
+#define WINDOW_HEIGHT	  768
+#define MAX_PATH_LENGTH   256
+#define FULLSCREEN	  0
+
+
+
+
 
 /************************************
 /      Structure Definitions
@@ -72,7 +86,7 @@ typedef struct {
 typedef struct {
   int x;
   int y;
-  int x;
+  int z;
   int w;
 } Block;
 
@@ -146,8 +160,8 @@ int main(int argc, char **argv) {
 
 /*
 1. initialize rand
-*/
   Random Number generation. Pretty standard stuff. Seed with time.
+*/
   srand(time(NULL));
   rand();
 /*
@@ -155,7 +169,7 @@ int main(int argc, char **argv) {
   openGL Library - used to make windows and control keyboard input.
   Pretty important.  First we need to initialize it.
 */
-  if (!glfwInint())
+  if (!glfwInit())
     return -1;
 /*
   Then we need to create a new window and set our DataStructure with it, and

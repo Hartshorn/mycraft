@@ -2,7 +2,7 @@
 
 #define MAX_SIGN_LENGTH     64
 
-typedef stryct {
+typedef struct {
   int x;
   int y;
   int z;
