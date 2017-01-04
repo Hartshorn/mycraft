@@ -31,7 +31,7 @@ TEST_RUN='./test/out/mycraft_test'
 if [ "$1" == "clean" ]; then
 	echo
 	echo "	Cleaning up. . . "
-	rm -f bin/*
+	rm -f bin/* test/out/*
 	echo
 	echo "	Done Cleaning up."
 	echo

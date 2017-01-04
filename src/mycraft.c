@@ -37,7 +37,6 @@ void create_window()
   game->window = glfwCreateWindow(window_width, window_height, "myCraft", monitor, NULL);
 }
 
-
 int glew_init() 
 {
 	glfwMakeContextCurrent(game->window);
@@ -54,9 +53,9 @@ int glew_init()
 void gl_init()
 {
 	glEnable(GL_CULL_FACE);
-    glEnable(GL_DEPTH_TEST);
-    glLogicOp(GL_INVERT);
-    glClearColor(0, 0, 0, 1);
+	glEnable(GL_DEPTH_TEST);
+	glLogicOp(GL_INVERT);
+	glClearColor(0, 0, 0, 1);
 }
 
 
@@ -82,6 +81,10 @@ int main(int argc, char **argv)
 
   load_textures();
   load_shaders();
+
+  game->mode = MODE_OFFLINE;
+  snprintf(game->db_path, MAX_PATH_LENGTH, "%s", DB_PATH);
+
 
 }
 
