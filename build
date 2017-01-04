@@ -2,4 +2,6 @@
 
 # check to make sure there is a bin diretory
 
-clang -lglfw -o bin/mycraft src/mycraft.c
+ clang -v -lglfw -o bin/mycraft src/mycraft.c
+
+
