@@ -1,18 +1,4 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "../deps/tinycthread/tinycthread.h"
-
-#include "../include/error.h"
-#include "../include/config.h"
-#include "../include/structs.h"
-#include "../include/callbacks.h"
-#include "../include/textures.h"
-#include "../include/shaders.h"
-
-
+#include "../include/mycraft.h"
 
 static Model model;
 static Model *game = &model;
@@ -58,6 +44,14 @@ void gl_init()
 	glClearColor(0, 0, 0, 1);
 }
 
+Result set_db_path()
+{
+	game->mode = MODE_OFFLINE;
+	snprintf(game->db_path, MAX_PATH_LENGTH, "%s", DB_PATH);
+	
+	return OK;
+}
+
 
 int main(int argc, char **argv) 
 {
@@ -82,9 +76,10 @@ int main(int argc, char **argv)
   load_textures();
   load_shaders();
 
-  game->mode = MODE_OFFLINE;
-  snprintf(game->db_path, MAX_PATH_LENGTH, "%s", DB_PATH);
-
+  if (set_db_path() != OK)
+	  return handle_error(600, "set_db_path()");
+	
+  free(game);
   glfwTerminate();
 }
 

@@ -6,6 +6,12 @@
 #																	#
 #####################################################################
 
+# notes:
+# add something about clang: scan-build and scan-view (remember to run scan-build ./build)
+# also something about valgrind
+
+
+
 SOURCE='src/mycraft.c'
 
 OBJECTS='src/error.c src/callbacks.c src/textures.c src/shaders.c src/util.c'
@@ -16,9 +22,11 @@ OUT='-o bin/mycraft'
 
 CFLAGS='-g -Wall -std=c99 -O0' 
 
-COMPILER='clang'
+CC='clang'
 
 TEST_SOURCE='test/src/mycraft_test.c'
+
+TEST_OBJECTS='src/util.c src/callbacks.c'
 
 TEST_OUT='-o test/out/mycraft_test'
 
@@ -51,7 +59,7 @@ fi
 #
 if [ "$2" == "test" ] || [ "$1" == "test" ]; then
 	echo "	Building Tests . . ."
-	$COMPILER $TEST_OUT $TEST_SOURCE
+	$CC $TEST_OUT $TEST_OBJECTS $TEST_SOURCE
 	echo
 	echo "	Running Tests . . ."
 	echo
@@ -62,5 +70,5 @@ if [ "$2" == "test" ] || [ "$1" == "test" ]; then
 	exit 0;
 fi
 
-$COMPILER $CFLAGS $LIBS $OUT $OBJECTS $SOURCE
+$CC $CFLAGS $LIBS $OUT $OBJECTS $SOURCE
 

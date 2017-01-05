@@ -4,6 +4,11 @@
 #include "sign.h"
 
 
+typedef enum {
+	OK,
+	FAIL
+} Result;
+
 typedef struct {
   int p;
   int q;
