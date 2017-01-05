@@ -8,7 +8,7 @@
 
 SOURCE='src/mycraft.c'
 
-OBJECTS='src/error.c src/callbacks.c src/textures.c src/shaders.c'
+OBJECTS='src/error.c src/callbacks.c src/textures.c src/shaders.c src/util.c'
 
 LIBS='-lGL -lGLEW -lglfw'
 

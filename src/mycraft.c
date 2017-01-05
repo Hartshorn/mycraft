@@ -74,7 +74,7 @@ int main(int argc, char **argv)
     return handle_error(200, "create_window()");
   }
 
-  if (!glew_init())
+  if (glew_init() != GLEW_OK)
     return handle_error(300, "glew_init()");
 
   gl_init();
@@ -85,7 +85,7 @@ int main(int argc, char **argv)
   game->mode = MODE_OFFLINE;
   snprintf(game->db_path, MAX_PATH_LENGTH, "%s", DB_PATH);
 
-
+  glfwTerminate();
 }
 
   
