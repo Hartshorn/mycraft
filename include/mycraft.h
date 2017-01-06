@@ -14,6 +14,7 @@
 #include "../include/callbacks.h"
 #include "../include/textures.h"
 #include "../include/shaders.h"
+#include "../include/worker.h"
 
 void create_window(); 
 int glew_init(); 

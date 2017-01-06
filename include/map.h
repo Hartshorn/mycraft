@@ -42,3 +42,6 @@ typedef struct {
   unsigned int size;
   MapEntry *data;
 } Map;
+
+void map_set_func(int x, int y, int z, int w, void *arg);
+int map_set(Map *map, int x, int y, int z, int w);

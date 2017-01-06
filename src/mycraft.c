@@ -52,6 +52,22 @@ Result set_db_path()
 	return OK;
 }
 
+Result init_worker_threads()
+{
+  for (int i = 0; i < WORKERS_COUNT; i++)
+  {
+    Worker *worker = game->workers + i;
+    worker->index = i;
+    worker->state = WORKER_IDLE;
+    mtx_init(&worker->mtx, mtx_plain);
+    cnd_init(&worker->cnd);
+    thrd_create(&worker->thrd, worker_run, worker);
+  }
+  return OK;
+}
+
+
+
 
 int main(int argc, char **argv) 
 {
@@ -78,6 +94,14 @@ int main(int argc, char **argv)
 
   if (set_db_path() != OK)
 	  return handle_error(600, "set_db_path()");
+
+  game->create_radius = CREATE_CHUNK_RADIUS;
+  game->render_radius = RENDER_SIGN_RADIUS;
+  game->delete_radius = DELETE_CHUNK_RADIUS;
+  game->sign_radius   = RENDER_SIGN_RADIUS;
+
+  if (init_worker_threads() != OK)
+    return handle_error(700, "init_worker_threads()");
 	
   free(game);
   glfwTerminate();

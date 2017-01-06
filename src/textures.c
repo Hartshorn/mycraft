@@ -33,7 +33,6 @@ static void t_load(Texture t)
 
 static void load_tex() 
 {
-	/*
 	GLuint texture;
 	glGenTextures(1, &texture);
 	glActiveTexture(GL_TEXTURE0);
@@ -41,7 +40,7 @@ static void load_tex()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	load_png_texture("textures/texture.png");
-	*/
+	
 }
 static void load_font() {}
 static void load_sky() {}

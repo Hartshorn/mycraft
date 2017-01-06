@@ -5,6 +5,10 @@
 
 #include "../../include/util.h"
 #include "../../include/callbacks.h"
+#include "../../include/map.h"
+#include "../../include/db.h"
+#include "../../include/world.h"
+#include "../../include/worker.h"
 
 typedef enum {
 	T_INITIAL,
