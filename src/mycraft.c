@@ -103,7 +103,7 @@ int main(int argc, char **argv)
   if (init_worker_threads() != OK)
     return handle_error(700, "init_worker_threads()");
 	
-  free(game);
+  // free(game);
   glfwTerminate();
 }
 

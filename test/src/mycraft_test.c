@@ -51,11 +51,12 @@ Test_Result run_tests(Test_Case **tests, int n)
 	Test_Result result = T_PASSED;
 
 	for (int i = 0; i < n; i++) {
-		tests[i]->result = perform_test(tests[i]);
+		Test_Case *t = tests[i];
+		t->result = perform_test(t);
 
-		if (tests[i]->result != T_PASSED) {
+		if (t->result != T_PASSED) {
 			fprintf(stdout, "TEST FAILED: %s\n", \
-					resolve_test_name(tests[i]->test_to_perform));
+					resolve_test_name(t->test_to_perform));
 			result = T_FAILED;
 		}
 	}
