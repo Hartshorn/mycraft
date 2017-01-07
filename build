@@ -14,7 +14,7 @@
 
 SOURCE='src/mycraft.c'
 
-OBJECTS='deps/tinycthread/tinycthread.c src/error.c src/callbacks.c src/textures.c src/shaders.c src/db.c src/util.c src/map.c src/world.c src/worker.c'
+OBJECTS='deps/lodepng/lodepng.c deps/tinycthread/tinycthread.c src/error.c src/callbacks.c src/textures.c src/shaders.c src/db.c src/util.c src/map.c src/world.c src/worker.c'
 
 LIBS='-lGL -lGLEW -lglfw'
 
@@ -27,7 +27,7 @@ CC='clang'
 
 TEST_SOURCE='test/src/mycraft_test.c'
 
-TEST_OBJECTS='deps/tinycthread/tinycthread.c src/util.c src/callbacks.c src/map.c src/db.c src/world.c src/worker.c'
+TEST_OBJECTS='deps/lodepng/lodepng.c deps/tinycthread/tinycthread.c src/util.c src/callbacks.c src/map.c src/db.c src/world.c src/worker.c'
 
 TEST_OUT='-o test/out/mycraft_test'
 
