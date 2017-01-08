@@ -15,11 +15,10 @@ typedef enum {
 	S_SKY
 } Shader;
 
-void load_shaders();
-static void s_load(Shader);
-static void load_block(GLuint program, const char *shader, const char *fragment);
-static void load_line(GLuint program, const char *shader, const char *fragment);
-static void load_text(GLuint program, const char *shader, const char *fragment);
-static void load_sky(GLuint program, const char *shader, const char *fragment);
+void s_load(GLuint, Shader, Attrib);
+static void load_block(Attrib, GLuint, const char *, const char *);
+static void load_line(Attrib, GLuint, const char *, const char *);
+static void load_text(Attrib, GLuint, const char *, const char *);
+static void load_sky(Attrib, GLuint, const char *, const char *);
 
 

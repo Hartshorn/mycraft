@@ -3,6 +3,22 @@
 
 #include <stdio.h> // just for testing
 
+
+Result init_worker_threads(Model *game)
+{
+  for (int i = 0; i < WORKERS_COUNT; i++)
+  {
+    Worker *worker = game->workers + i;
+    worker->index = i;
+    worker->state = WORKER_IDLE;
+    mtx_init(&worker->mtx, mtx_plain);
+    cnd_init(&worker->cnd);
+    thrd_create(&worker->thrd, worker_run, worker);
+  }
+  return OK;
+}
+
+
 int worker_run(void *arg)
 {
     Worker *worker = (Worker *)arg;

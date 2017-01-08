@@ -44,31 +44,6 @@ void gl_init()
 	glClearColor(0, 0, 0, 1);
 }
 
-Result set_db_path()
-{
-	game->mode = MODE_OFFLINE;
-	snprintf(game->db_path, MAX_PATH_LENGTH, "%s", DB_PATH);
-	
-	return OK;
-}
-
-Result init_worker_threads()
-{
-  for (int i = 0; i < WORKERS_COUNT; i++)
-  {
-    Worker *worker = game->workers + i;
-    worker->index = i;
-    worker->state = WORKER_IDLE;
-    mtx_init(&worker->mtx, mtx_plain);
-    cnd_init(&worker->cnd);
-    thrd_create(&worker->thrd, worker_run, worker);
-  }
-  return OK;
-}
-
-
-
-
 int main(int argc, char **argv) 
 {
 
@@ -76,33 +51,44 @@ int main(int argc, char **argv)
   rand();
 
   if (!glfwInit()) 
-    return handle_error(100, "glfwInit()");
+    return handle_error(GLFW_INIT_ERROR, "glfwInit()");
 
   create_window();
   if (!game->window) {
     glfwTerminate();
-    return handle_error(200, "create_window()");
+    return handle_error(CREATE_WINDOW_ERROR, "create_window()");
   }
 
   if (glew_init() != GLEW_OK)
-    return handle_error(300, "glew_init()");
+    return handle_error(GLEW_INIT_ERROR, "glew_init()");
 
   gl_init();
 
   load_textures();
-  load_shaders();
 
-  if (set_db_path() != OK)
-	  return handle_error(600, "set_db_path()");
+  GLint program         = 0;
+  Attrib block_attrib   = {0};
+  Attrib line_attrib    = {0};
+  Attrib text_attrib    = {0};
+  Attrib sky_attrib     = {0};
+  shader_load(program, S_BLOCK, block_attrib);
+  shader_load(program, S_LINE, line_attrib);
+  shader_load(program, S_TEXT, text_attrib);
+  shader_load(program, S_SKY, sky_attrib);
+
+  if (set_db_path(game) != OK)
+	  return handle_error(SET_DB_PATH_ERROR, "set_db_path()");
 
   game->create_radius = CREATE_CHUNK_RADIUS;
   game->render_radius = RENDER_SIGN_RADIUS;
   game->delete_radius = DELETE_CHUNK_RADIUS;
   game->sign_radius   = RENDER_SIGN_RADIUS;
 
-  if (init_worker_threads() != OK)
-    return handle_error(700, "init_worker_threads()");
-	
+  if (init_worker_threads(game) != OK)
+    return handle_error(INIT_WORKER_THREADS_ERROR, "init_worker_threads()");
+
+  
+
   // free(game);
   glfwTerminate();
 }
