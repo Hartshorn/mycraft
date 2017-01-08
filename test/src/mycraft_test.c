@@ -82,7 +82,6 @@ Test_Result run_initial_tests(Test_Case tc)
 {
 	fprintf(stdout, "\nbegin initial test\n");
     
-	load_png_texture("FILE NAME TEST");	
 	key_callback(NULL, 1, 2, 3, 4);	
 	
 	fprintf(stdout, "\n\nend initial test\n");
@@ -96,11 +95,10 @@ Test_Result run_secondary_tests()
 	fprintf(stdout, "\nbegin secondary test\n");
 
     mouse_callback(NULL, 1, 2, 3); 
-	GLuint passed = load_program("TEST FILE ONE", "TEST FILE TWO");
 
 	fprintf(stdout, "\n\nend secondary test\n");
 
-	return passed ? T_FAILED : T_PASSED;
+	return T_PASSED;
 }
 
 
@@ -109,7 +107,6 @@ Test_Result run_tertiary_tests()
 	fprintf(stdout, "\nbegin tertiary test\n");
 
 	scroll_callback(NULL, 123.45f, 33.44f); 
-
 
 	fprintf(stdout, "\n\nend tertiary test\n");
 

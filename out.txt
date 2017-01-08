@@ -1,0 +1,114 @@
+
+	Cleaning up. . . 
+
+	Done Cleaning up.
+
+In file included from src/textures.c:1:
+In file included from src/../include/textures.h:6:
+In file included from src/../include/util.h:10:
+src/../include/error.h:21:15: warning: unused function 'init_error' [-Wunused-function]
+static Error* init_error(int, const char *);
+              ^
+src/../include/error.h:23:13: warning: unused function 'print_error' [-Wunused-function]
+static void print_error(Error *);
+            ^
+src/../include/error.h:25:13: warning: unused function 'cleanup_error' [-Wunused-function]
+static void cleanup_error(Error *);
+            ^
+3 warnings generated.
+In file included from src/shaders.c:1:
+In file included from src/../include/shaders.h:7:
+src/../include/error.h:21:15: warning: unused function 'init_error' [-Wunused-function]
+static Error* init_error(int, const char *);
+              ^
+src/../include/error.h:23:13: warning: unused function 'print_error' [-Wunused-function]
+static void print_error(Error *);
+            ^
+src/../include/error.h:25:13: warning: unused function 'cleanup_error' [-Wunused-function]
+static void cleanup_error(Error *);
+            ^
+3 warnings generated.
+src/util.c:81:26: warning: incompatible pointer to integer conversion passing 'const char *' to parameter of type 'GLuint' (aka 'unsigned int') [-Wint-conversion]
+        glAttachShader(program, shader1);
+                                ^~~~~~~
+src/util.c:82:26: warning: incompatible pointer to integer conversion passing 'const char *' to parameter of type 'GLuint' (aka 'unsigned int') [-Wint-conversion]
+        glAttachShader(program, shader2);
+                                ^~~~~~~
+src/util.c:94:26: warning: incompatible pointer to integer conversion passing 'const char *' to parameter of type 'GLuint' (aka 'unsigned int') [-Wint-conversion]
+        glDetachShader(program, shader1);
+                                ^~~~~~~
+src/util.c:95:26: warning: incompatible pointer to integer conversion passing 'const char *' to parameter of type 'GLuint' (aka 'unsigned int') [-Wint-conversion]
+        glDetachShader(program, shader2);
+                                ^~~~~~~
+src/util.c:96:17: warning: incompatible pointer to integer conversion passing 'const char *' to parameter of type 'GLuint' (aka 'unsigned int') [-Wint-conversion]
+        glDeleteShader(shader1);
+                       ^~~~~~~
+src/util.c:97:17: warning: incompatible pointer to integer conversion passing 'const char *' to parameter of type 'GLuint' (aka 'unsigned int') [-Wint-conversion]
+        glDeleteShader(shader2);
+                       ^~~~~~~
+src/util.c:105:32: warning: incompatible integer to pointer conversion passing 'GLuint' (aka 'unsigned int') to parameter of type 'const char *' [-Wint-conversion]
+        GLuint program = make_program(shader1, shader2);
+                                      ^~~~~~~
+src/util.c:78:33: note: passing argument to parameter 'shader1' here
+GLuint make_program(const char *shader1, const char *shader2)
+                                ^
+src/util.c:105:41: warning: incompatible integer to pointer conversion passing 'GLuint' (aka 'unsigned int') to parameter of type 'const char *' [-Wint-conversion]
+        GLuint program = make_program(shader1, shader2);
+                                               ^~~~~~~
+src/util.c:78:54: note: passing argument to parameter 'shader2' here
+GLuint make_program(const char *shader1, const char *shader2)
+                                                     ^
+In file included from src/util.c:1:
+In file included from src/../include/util.h:10:
+src/../include/error.h:21:15: warning: unused function 'init_error' [-Wunused-function]
+static Error* init_error(int, const char *);
+              ^
+src/../include/error.h:23:13: warning: unused function 'print_error' [-Wunused-function]
+static void print_error(Error *);
+            ^
+src/../include/error.h:25:13: warning: unused function 'cleanup_error' [-Wunused-function]
+static void cleanup_error(Error *);
+            ^
+11 warnings generated.
+In file included from src/mycraft.c:1:
+In file included from src/../include/mycraft.h:15:
+In file included from src/../include/../include/textures.h:6:
+In file included from src/../include/util.h:10:
+src/../include/error.h:21:15: warning: unused function 'init_error' [-Wunused-function]
+static Error* init_error(int, const char *);
+              ^
+src/../include/error.h:23:13: warning: unused function 'print_error' [-Wunused-function]
+static void print_error(Error *);
+            ^
+src/../include/error.h:25:13: warning: unused function 'cleanup_error' [-Wunused-function]
+static void cleanup_error(Error *);
+            ^
+In file included from src/mycraft.c:1:
+In file included from src/../include/mycraft.h:15:
+src/../include/../include/textures.h:16:13: warning: unused function 't_load' [-Wunused-function]
+static void t_load(Texture);
+            ^
+src/../include/../include/textures.h:17:13: warning: unused function 'load_tex' [-Wunused-function]
+static void load_tex();
+            ^
+src/../include/../include/textures.h:18:13: warning: unused function 'load_font' [-Wunused-function]
+static void load_font();
+            ^
+src/../include/../include/textures.h:19:13: warning: unused function 'load_sky' [-Wunused-function]
+static void load_sky();
+            ^
+src/../include/../include/textures.h:20:13: warning: unused function 'load_sign' [-Wunused-function]
+static void load_sign();
+            ^
+In file included from src/mycraft.c:1:
+In file included from src/../include/mycraft.h:16:
+src/../include/../include/shaders.h:19:13: warning: unused function 'load_block' [-Wunused-function]
+static void load_block(Attrib, GLuint, const char *, const char *);
+            ^
+src/../include/../include/shaders.h:20:13: warning: unused function 'load_line' [-Wunused-function]
+static void load_line(Attrib, GLuint, const char *, const char *);
+            ^
+src/../include/../include/shaders.h:21:13: warning: unused function 'load_text' [-Wunused-function]
+static void load_text(Attrib, GLuint, const char *, const char *);
+            ^
+11 warnings generated.

@@ -2,15 +2,6 @@
 
 
 
-int handle_error(int n, const char *s)
-{
-	Error *e = init_error(n, s);
-	print_error(e);
-	cleanup_error(e);
-	
-	return -1;
-}
-
 static Error* init_error(int n, const char *s)
 {
 	Error *e = malloc(sizeof(Error));
@@ -27,4 +18,13 @@ static void print_error(Error *e)
 static void cleanup_error(Error *e)
 {
 	free(e);
+}
+
+int handle_error(int n, const char *s)
+{
+	Error *e = init_error(n, s);
+	print_error(e);
+	cleanup_error(e);
+	
+	return -1;
 }

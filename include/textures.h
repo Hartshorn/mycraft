@@ -2,7 +2,7 @@
 
 #include <GL/glew.h>
 
-#include "error.h"
+// #include "error.h"
 #include "util.h"
 
 typedef enum {

@@ -15,7 +15,7 @@ typedef enum {
 	S_SKY
 } Shader;
 
-void s_load(GLuint, Shader, Attrib);
+void shader_load(GLuint, Shader, Attrib);
 static void load_block(Attrib, GLuint, const char *, const char *);
 static void load_line(Attrib, GLuint, const char *, const char *);
 static void load_text(Attrib, GLuint, const char *, const char *);

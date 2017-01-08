@@ -22,8 +22,6 @@ void flip_image_vertical(unsigned char *data, unsigned int width, unsigned int h
 
 void load_png_texture(const char *file) 
 {
-	fprintf(stdout, "load_png_texture() called with %s\n\n", file);
-
 	unsigned int error;
 	unsigned char *data;
 	unsigned int width, height;
@@ -77,7 +75,7 @@ GLuint load_shader(GLenum type, const char *path)
 	return result;
 }
 
-GLuint make_program(const char *shader1, const char *shader2)
+GLuint make_program(GLuint shader1, GLuint shader2)
 {
 	GLuint program = glCreateProgram();
 	glAttachShader(program, shader1);
@@ -114,4 +112,43 @@ Result set_db_path(Model *game)
 	snprintf(game->db_path, MAX_PATH_LENGTH, "%s", DB_PATH);
 	
 	return OK;
+}
+
+void create_window(Model *game) 
+{
+  int window_width = WINDOW_WIDTH;
+  int window_height = WINDOW_HEIGHT;
+
+  GLFWmonitor *monitor = NULL;
+
+  if (FULLSCREEN) {
+    int mode_count;
+    monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode *modes = glfwGetVideoModes(monitor, &mode_count);
+    window_width = modes[mode_count - 1].width;
+    window_height = modes[mode_count - 1].height;
+  
+  }
+  game->window = glfwCreateWindow(window_width, window_height, "myCraft", monitor, NULL);
+}
+
+int glew_init(Model *game)
+{
+	glfwMakeContextCurrent(game->window);
+	glfwSwapInterval(VSYNC);
+	glfwSetInputMode(game->window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetKeyCallback(game->window, key_callback);
+	glfwSetCharCallback(game->window, char_callback);
+	glfwSetMouseButtonCallback(game->window, mouse_callback);
+	glfwSetScrollCallback(game->window, scroll_callback);
+	
+	return glewInit();
+}
+
+void gl_init()
+{
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	glLogicOp(GL_INVERT);
+	glClearColor(0, 0, 0, 1);
 }

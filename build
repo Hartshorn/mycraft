@@ -23,7 +23,7 @@ OUT='-o bin/mycraft'
 CFLAGS='-g -Wall -std=c99 -O0 -pthread' 
 
 # for verbose, add -v
-CC='clang'
+CC='clang '
 
 TEST_SOURCE='test/src/mycraft_test.c'
 

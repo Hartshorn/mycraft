@@ -8,7 +8,7 @@
 
 #include "../deps/tinycthread/tinycthread.h"
 
-#include "../include/error.h"
+//#include "../include/error.h"
 #include "../include/config.h"
 #include "../include/structs.h"
 #include "../include/callbacks.h"
