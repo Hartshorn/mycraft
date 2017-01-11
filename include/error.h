@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #define GLFW_INIT_ERROR				100
 #define CREATE_WINDOW_ERROR 		200

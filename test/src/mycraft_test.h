@@ -1,5 +1,7 @@
 #pragma once
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -44,11 +46,12 @@ typedef enum {
 typedef struct {
 	Test test_to_perform;
 	Test_Result result;
+	Model *game;
 } Test_Case;
 
 const char* resolve_test_name(Test);
 
-Test_Case* create_test(Test);
+Test_Case* create_test(Test, Model *);
 Test_Result perform_test(Test_Case *);
 void cleanup_test(Test_Case *);
 

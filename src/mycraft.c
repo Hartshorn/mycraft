@@ -11,6 +11,7 @@ int main(int argc, char **argv)
 
   if (!glfwInit()) 
     return handle_error(GLFW_INIT_ERROR, "glfwInit()");
+
   create_window(game);
   if (!game->window) {
     glfwTerminate();
@@ -46,6 +47,10 @@ int main(int argc, char **argv)
     return handle_error(INIT_WORKER_THREADS_ERROR, "init_worker_threads()");
 
 
+  
+  // while (1) {
+
+  // }
   // free(game);
   glfwTerminate();
 }
